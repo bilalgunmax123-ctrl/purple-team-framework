@@ -1,0 +1,29 @@
+title: Potential LSASS Credential Dumping Access
+id: 6a1d4c8e-2b7f-4d9a-e3c5-8f1a2b3c4d55
+status: test
+description: Detects potential credential dumping (T1003.001) via handle access to LSASS or Sysmon process-tampering events targeting LSASS.
+author: Purple Team Framework
+date: 2026/10/24
+tags:
+  - attack.credential-access
+  - attack.t1003.001
+logsource:
+  product: windows
+detection:
+  handle_access:
+    EventID: 10
+    TargetImage|endswith: '\lsass.exe'
+    GrantedAccess:
+      - '0x1010'
+      - '0x1410'
+      - '0x1438'
+      - '0x143a'
+      - '0x1fffff'
+  tampering:
+    EventID: 25
+    TargetImage|endswith: '\lsass.exe'
+  condition: handle_access or tampering
+falsepositives:
+  - EDR / AV products legitimately inspecting LSASS
+  - Authorized credential audits
+level: critical
