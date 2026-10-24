@@ -1,0 +1,39 @@
+{
+  "elasticsearch": {
+    "alert_index": "alerts",
+    "enabled": false,
+    "events_per_rule": 5,
+    "index": "sysmon-test",
+    "poll_interval_s": 5,
+    "poll_timeout_s": 60,
+    "url": "http://localhost:9200"
+  },
+  "framework": "purple-team-framework",
+  "rules": [
+    {
+      "file": "../rules/dns_tunneling.yml",
+      "id": "8f2b1c4a-9d3e-4f5a-b7c1-2e8a6d4f0a11",
+      "scenario": "dns_tunneling",
+      "technique": "T1071.004"
+    },
+    {
+      "file": "../rules/process_injection.yml",
+      "id": "3c7e9b2d-1a4f-4e8c-a5d6-7b2f9e0c4d22",
+      "scenario": "process_injection",
+      "technique": "T1055"
+    },
+    {
+      "file": "../rules/lsass_access.yml",
+      "id": "6a1d4c8e-2b7f-4d9a-e3c5-8f1a2b3c4d55",
+      "scenario": "lsass_access",
+      "technique": "T1003.001"
+    },
+    {
+      "file": "../rules/scheduled_task.yml",
+      "id": "9e5f2a7b-4c1d-4a8e-b2f6-1d3c5e7a9b33",
+      "scenario": "scheduled_task",
+      "technique": "T1053.005"
+    }
+  ],
+  "version": "1.0.0"
+}
