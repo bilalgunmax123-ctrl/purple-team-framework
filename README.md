@@ -1,3 +1,5 @@
+![Detection CI](https://github.com/bilalgunmax123-ctrl/purple-team-framework/actions/workflows/detection_ci.yml/badge.svg)
+
 # Purple Team Detection-as-Code Framework
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
@@ -16,6 +18,15 @@ This repository treats **detections like code**: every detection rule lives in v
   - `0` — all checks passed
   - `1` — detection gap (a rule did not fire as expected)
   - `2` — harness/config error
+
+## MITRE ATT&CK Coverage
+
+| Rule | Technique | Tactic | What it detects |
+|---|---|---|---|
+| `rules/dns_tunneling.yml` | T1071.004 | Command and Control | DNS tunneling via abnormally long / high-entropy DNS TXT queries |
+| `rules/process_injection.yml` | T1055.002 | Defense Evasion | Portable Executable Injection via suspicious process-handle access masks |
+| `rules/lsass_access.yml` | T1003.001 | Credential Access | LSASS memory access / process tampering for credential dumping |
+| `rules/scheduled_task.yml` | T1053.005 | Persistence | Scheduled-task creation for persistence |
 
 ## Repository layout
 
@@ -56,6 +67,12 @@ and the index/URL in `testing/detection_matrix_config.json`, then run without `-
 ```bash
 python testing/matrix_harness.py --config testing/detection_matrix_config.json
 ```
+
+## Matrix Report Output
+
+Example output of `testing/matrix_harness.py --check` (screenshot placeholder — replace with a real capture):
+
+![Matrix Report](docs/matrix_report_preview.png)
 
 ## CI
 

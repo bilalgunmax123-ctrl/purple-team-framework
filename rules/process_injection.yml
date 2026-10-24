@@ -7,7 +7,7 @@ date: 2026/10/24
 tags:
   - attack.defense-evasion
   - attack.privilege-escalation
-  - attack.t1055
+  - attack.t1055.002
 logsource:
   product: windows
   category: process_access
